@@ -7,7 +7,11 @@ import { ExpirationCompleteListener } from './events/listeners/expiration-comple
 import { PaymentCreatedListener } from './events/listeners/payment-created-listener';
 
 const start = async () => {
+<<<<<<< HEAD
   console.log('checking workflow for merge......');
+=======
+  console.log('checking workflow for merge....');
+>>>>>>> d63016a6f1bab39ebd0555c3e3ab0cb74efb94c2
 
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
