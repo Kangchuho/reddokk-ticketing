@@ -5,11 +5,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 
 const start = async () => {
-<<<<<<< HEAD
   console.log('checking workflow for merge.....');
-=======
-  console.log('checking workflow for merge...');
->>>>>>> d63016a6f1bab39ebd0555c3e3ab0cb74efb94c2
 
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
