@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-service
@@ -7,26 +7,41 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: www.hannimbi.com
-      http:
+  - host: echo1.example.com
+    http:
         paths:
-          - path: /api/payments/?(.*)
-            backend:
-              serviceName: payments-srv
-              servicePort: 3000
-          - path: /api/users/?(.*)
-            backend:
-              serviceName: auth-srv
-              servicePort: 3000
-          - path: /api/tickets/?(.*)
-            backend:
-              serviceName: tickets-srv
-              servicePort: 3000
-          - path: /api/orders/?(.*)
-            backend:
-              serviceName: orders-srv
-              servicePort: 3000
-          - path: /?(.*)
-            backend:
-              serviceName: client-srv
-              servicePort: 3000
+        - pathType: Prefix
+          path: /api/payments/?(.*)
+          backend:
+            service:
+              name: payments-srv
+              port:
+                number: 3000
+         - pathType: Prefix
+          path: /api/users/?(.*)
+          backend:
+            service:
+              name: auth-srv
+              port:
+                number: 3000
+        - pathType: Prefix
+          path: /api/tickets/?(.*)
+          backend:
+            service:
+              name: tickets-srv
+              port:
+                number: 3000
+        - pathType: Prefix
+          path: /api/orders/?(.*)
+          backend:
+            service:
+              name: orders-srv
+              port:
+                number: 3000              
+        - pathType: Prefix
+          path: /?(.*)
+          backend:
+            service:
+              name: client-srv
+              port:
+                number: 3000
